@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Danilo Sampaio</title>
+	<script src="./jquery/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./Semantic-UI/semantic.min.css">
+	<script src="./Semantic-UI/semantic.min.js"></script>
+	<script src="./vis/vis.js"></script>
+	<script src="./data.js"></script>
+	<script src="./vue.min.js"></script>
+	<script src="./components/profile.js"></script>
+	<script src="./components/featuredProject.js"></script>
+	<script src="./components/opensourceContribution.js"></script>
+	<script src="./components/experiences.js"></script>
+	<script src="./components/featuredSkill.js"></script>
+	<script src="./components/skill.js"></script>
+	<script src="./components/education.js"></script>
+  <link href="./vis/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />  
+</head>
+<body>
+	<div id="resume">
+		<div class="ui grid">
+			<div class="four wide column">
+				<div class="ui basic segment">
+					<profile :profile="profile"></profile>
+				</div>
+			</div>
+			<div class="twelve wide column">
+				<div class="ui basic segment">
+					<h5 class="ui horizontal divider header"><i class="teal trophy icon"></i>Projetos em Destaque</h5>
+					<div class="ui three cards">
+				    <template v-for="project in featuredProjects">
+				    	<featuredproject :project="project"></featuredproject> 
+				    </template>
+					</div>
+				</div>
+				<div class="ui basic segment">
+					<h5 class="ui horizontal divider header"><i class="github icon"></i>Principais contribuições em projetos OpenSource</h5>
+						<div class="ui three cards">
+				      <template v-for="contrib in opensourceContributions">
+					    	<opensourcecontrib :project="contrib" :username="'danilosampaio'"></opensourcecontrib> 
+					    </template>
+					  </div>
+				</div>
+			</div>
+		</div>
+		<div class="ui grid">
+			<div class="column">
+				<div class="ui basic segment">
+					<h5 class="ui horizontal divider header"><i class="grey history icon"></i>Experiência Profissional</h5>
+					<experiences :experiences="experiences"></experiences> 
+				</div>
+			</div>
+		</div>
+
+		<div class="ui grid">
+			<div class="column">
+				<div class="ui basic segment">
+					<h5 class="ui horizontal divider header"><i class="blue linkedin icon"></i>Skills comprovadas</h5>
+					<div class="ui sixten column grid">
+						<div class="four wide column">
+							<featuredskill :skill="featuredSkill"></featuredskill>
+						</div>
+						
+						<div class="twelve wide column">
+							<div class="ui three column grid">
+								<div v-for="s in skills" class="column">
+									<skill :skill="s"></skill>										
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui grid">
+			<div class="column">
+				<div class="ui basic segment">
+					<h5 class="ui horizontal divider header"><i class="grey university icon"></i>Formação</h5>
+					<div class="ui grid">
+						<div class="column">
+							<education :education="education"></education>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+  	$(document).ready(function(){
+  		new Vue({
+		  	el: '#resume',
+		  	data: window.data
+		  })
+  	})  
+  </script>
+
+	<style type="text/css">
+		.vis-timeline {
+			border: 0px solid #bfbfbf;
+		}
+	</style>
+</body>
+</html>
