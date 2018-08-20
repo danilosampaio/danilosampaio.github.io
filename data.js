@@ -54,7 +54,7 @@ window.data = {
     {id: 1, content: "ITTI", start: "2004-01-01", end: "2004-12-31"},
     {id: 2, content: "NASH", start: "2005-01-01", end: "2006-03-02"},
     {id: 3, content: "Dyad", start: "2006-05-02", end: "2013-12-25"},
-    {id: 4, content: "Capgemini", start: "2014-01-07", end: "2017-05-06"}
+    {id: 4, content: "Capgemini", start: "2014-01-07", end: null}
   ],
   featuredSkill: {
   	name: "Node.js Contributor",
